@@ -31,7 +31,6 @@ int main(){
 		printf("a_lenght: %d\n", a_lenght);
 		printf("address: %s\n", address);
 		printf("\n");
-		printf("\n");
 
 		free(marka);
 		free(address);
