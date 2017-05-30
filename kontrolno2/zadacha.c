@@ -24,6 +24,19 @@ void push_front(list **ICS, sl el){
 	*ICS = new;
 }
 
+/*double totalCost(list *ICS, char name[20]){
+	list *copy = ICS;
+	double total;
+
+	while(copy != NULL){
+		if(strcmp(copy->element.name, name) == 0){
+			total = copy->element.weigth*copy->element.price;
+		}
+		copy = copy->next;
+	}
+	return total;
+}*/
+
 void print_list(list *ICS){
 	list *copy = ICS;
 
@@ -31,17 +44,53 @@ void print_list(list *ICS){
 		printf("%s\n", copy->element.name);
 		printf("%lf\n", copy->element.weigth);
 		printf("%s\n", copy->element.type);
-		printf("%lf", copy->element.price);
+		printf("%lf\n", copy->element.price);
 		copy = copy->next;
 	}
 }
 
+list *createStackList(list *spisuk, FILE *fp){
+	sl sladoled;
+
+	while(fread(sladoled.name, sizeof(char), 20, fp)){
+		fread(&sladoled.weigth, sizeof(double), 1, fp);
+		fread(sladoled.type, sizeof(char), 2, fp);
+		fread(&sladoled.price, sizeof(double), 1, fp);
+
+		push_front(&spisuk, sladoled);
+
+		/*printf("%s\n", sladoled.name);
+		printf("%lf\n", sladoled.weigth);
+		printf("%s\n", sladoled.type);
+		printf("%lf\n", sladoled.price);*/
+
+	}
+	return spisuk;
+}
 
 int main(){
+	list *s1;
+	FILE *fp;
+
+	fp = fopen("sladoledi.bin", "rb");
+	s1 = createStackList(s1, fp);
+
+	print_list(s1);
+
+
+
+
+	return 0;
+}
+
+/*int main(){
 	list *ics;
+	FILE *fp;
 	sl sladoled;
 	int ics_num, i;
+	char ime[20];
 
+	fp = fopen("sladoledi.bin", "wb");
 	printf("Enter number of ice creams: \n");
 	scanf("%d", &ics_num);
 	
@@ -55,9 +104,19 @@ int main(){
 		printf("Enter price: \n");
 		scanf("%lf", &sladoled.price);
 		push_front(&ics, sladoled);
+
+		fwrite(&sladoled.name, sizeof(char), 20, fp);
+		fwrite(&sladoled.weigth, sizeof(double), 1, fp);
+		fwrite(&sladoled.type, sizeof(char), 2, fp);
+		fwrite(&sladoled.price, sizeof(double), 1, fp);
 	}
-	print_list(ics);
-	return 0;
+/*	print_list(ics);
+
+	printf("Enter name of ice cream: ");
+	scanf("%s", ime);
+	printf("%lf\n", totalCost(ics, ime));
+
+		return 0;
 }
 
 /*
