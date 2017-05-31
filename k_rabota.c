@@ -21,11 +21,21 @@ void push_front(list **contacts, contact el){
 
 void print_list(list *l1){
 	list *l = l1;
-
-	while(l != NULL){
+	//FILE *fp;
+	//int a, b;
+	//fp = fopen("abonati.bin", "wb");
+	while(l != NULL){	
 		printf("%s %s \n", l->element.name, l->element.number);
+		/*
+		a = strlen(l->element.name);
+		b = strlen(l->element.number);
+		fwrite(&a, sizeof(int), 1, fp);
+		fwrite(l->element.name, sizeof(char), a, fp);
+		fwrite(&b, sizeof(int), 1, fp);
+		fwrite(l->element.number, sizeof(char), b, fp);*/
 		l = l->next;
 	}
+	//fclose(fp);
 }
 
 char *search(list *l1, char* name){
@@ -51,9 +61,10 @@ int menu(){
 }
 
 int main(){
-	int num, counter, option;
+	int num, counter, option, counter2, flag;
 	contact c1;
-	list *cs;
+	FILE *fp;
+	list *cs = NULL;
 	char s_number[10];
 	char s_name[30];
 
@@ -66,9 +77,22 @@ int main(){
 		for(counter = 0; counter < num; counter++){
 			printf("Enter name: ");
 			scanf("%s", c1.name);
+			
 			printf("Enter number: ");
 			scanf("%s", c1.number);
-			push_front(&cs, c1);
+
+			flag = 0;
+			for(counter2 = 0; counter2 < strlen(c1.number); counter2++){
+				if(!(c1.number[counter2] >= '0' && c1.number[counter2] <= '9')){
+					flag = 1;
+					printf("ERROR: number cannot contain other symbols than digits!!!\n");
+					break;
+				}
+			}
+			if(flag == 0){
+				push_front(&cs, c1);
+			}
+			
 		} 
 		option = menu();
 	}
@@ -82,5 +106,6 @@ int main(){
 		strcpy(s_number, search(cs, s_name));
 		printf("\n%s\n", s_number);
 	}
+
 	return 0;
 }
