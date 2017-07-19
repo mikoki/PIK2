@@ -1,0 +1,1 @@
+CREATE TABLE Products(Code VARCHAR(10), Name VARCHAR(20), Price VARCHAR(3));

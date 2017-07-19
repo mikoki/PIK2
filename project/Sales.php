@@ -11,18 +11,19 @@ and open the template in the editor.
     </head>
     <body>
         <form action="Sales_php.php" method="POST">
-        	<input type="text" name = "number" placeholder = "Number"><br> 
+        	<input type="number" name = "number" placeholder = "Number"><br> 
         	</br>
-            <input type= "text" name = "date" placeholder = "Date YYYY.MM.DD"><br>
+            <input type= "date" name = "date" placeholder = "Date YYYY.MM.DD"><br>
             </br>
-            <input type="text" name = "code" placeholder = "Code"><br> 
+            <input type="number" name = "code" placeholder = "Code"><br> 
             </br>
-            <input type="text" name = "quantity" placeholder = "Quantity"><br>
+            <input type="number" name = "quantity" placeholder = "Quantity"><br>
             </br>
-            <input type= "text" name = "bulstat" placeholder = 'Bulstat'><br>
+            <input type= "number" name = "bulstat" placeholder = 'Bulstat'><br>
             </br>
-            <input type="submit" value = "INSERT"><br>     
+            <input type="submit" value = "Insert" name = "insert2"><br>
             </br>
- </form>        
+            <input type="submit" value = "Print table" name = "print_table2"><br> 
+        </form>        
     </body>
 </html>

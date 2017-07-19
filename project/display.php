@@ -10,21 +10,24 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-	        <form action="http://localhost:1337/project/Products.php">
+    	<h2>Welcome</h2>
+		<img src="display_picture.jpg" alt="Mountain View" style="width:450px;height:228px;">
+		<br></br>
+	    <form action="http://localhost:1337/project/Products.php">
     		<input type="submit" value="Products" />
-			</form>
+		</form>
 			
 			<br></br>
 
-			<form action="http://localhost:1337/project/Clients.php">
+		<form action="http://localhost:1337/project/Clients.php">
     		<input type="submit" value="Clients" />
-			</form>
+		</form>
 			
 			<br></br>	
 			
-			<form action="http://localhost:1337/project/Sales.php">
+		<form action="http://localhost:1337/project/Sales.php">
     		<input type="submit" value="Sales" />
-			</form> 
+		</form> 
 		</form>        
     </body>
 </html>

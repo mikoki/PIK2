@@ -11,11 +11,13 @@ and open the template in the editor.
     </head>
     <body>
         <form action="Clients_php.php" method="POST">
-        	<input type="text" name = "bulstat" placeholder = "Bulstat"><br> 
+        	<input type = "number" name = "bulstat" placeholder = "Bulstat"><br> 
             </br>
             <input type= "text" name = "c_name" placeholder = 'Name of the company'><br>
             </br>
-            <input type="submit" value = "INSERT"><br>     
+            <input type="submit" value = "Insert" name = "insert"><br>
+            </br>
+            <input type="submit" value = "Print table" name = "print_table"><br> 
             </br>
  		</form>        
     </body>
